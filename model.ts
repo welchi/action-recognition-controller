@@ -70,7 +70,6 @@ tf.loadModel("http://localhost:5000/model.json").then(model => {
         const [punch, kick, nothing] = Array.from((model.predict(
           mobilenet(tf.fromPixels(crop))
         ) as tf.Tensor1D).dataSync() as Float32Array);
-        const detect = (window as any).Detect;
         if (nothing >= 0.4) {
           return;
         }
@@ -80,7 +79,6 @@ tf.loadModel("http://localhost:5000/model.json").then(model => {
             "%cKick: " + kick.toFixed(2),
             "color: red; font-size: 30px"
           );
-          detect.onKick();
           return;
         }
         if (punch > kick && punch >= 0.35) {
@@ -88,7 +86,6 @@ tf.loadModel("http://localhost:5000/model.json").then(model => {
             "%cPunch: " + punch.toFixed(2),
             "color: blue; font-size: 30px"
           );
-          detect.onPunch();
           return;
         }
       }, 100);
