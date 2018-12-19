@@ -88,6 +88,7 @@ tf.loadModel("http://localhost:5000/model.json").then(model => {
             "%cKick: " + kick.toFixed(2),
             "color: red; font-size: 30px"
           );
+          connection.send("Kick");
           return;
         }
         if (punch > kick && punch >= 0.5) {
@@ -95,6 +96,7 @@ tf.loadModel("http://localhost:5000/model.json").then(model => {
             "%cPunch: " + punch.toFixed(2),
             "color: blue; font-size: 30px"
           );
+          connection.send("Punch");
           return;
         }
       }, 100);
