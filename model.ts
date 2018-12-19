@@ -1,6 +1,15 @@
 import * as tf from "@tensorflow/tfjs";
 import * as mobileNet from "@tensorflow-models/mobilenet";
 
+// WebSocket connection with Unity
+const connection = new WebSocket("ws://localhost:3000/");
+connection.onopen = function() {
+  connection.send("Hello");
+};
+connection.onerror = function(error) {
+  console.log("WebSocket Error " + error);
+};
+
 navigator.mediaDevices
   .getUserMedia({
     video: true,
