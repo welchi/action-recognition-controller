@@ -74,14 +74,14 @@ tf.loadModel("http://localhost:5000/model.json").then(model => {
           return;
         }
         console.log(punch.toFixed(2), kick.toFixed(2));
-        if (kick > punch && kick >= 0.35) {
+        if (kick > punch && kick >= 0.6) {
           console.log(
             "%cKick: " + kick.toFixed(2),
             "color: red; font-size: 30px"
           );
           return;
         }
-        if (punch > kick && punch >= 0.35) {
+        if (punch > kick && punch >= 0.6) {
           console.log(
             "%cPunch: " + punch.toFixed(2),
             "color: blue; font-size: 30px"
